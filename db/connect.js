@@ -1,7 +1,19 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const connectDB = (url)=>{
-    mongoose.connect(url);
+const connectDB =  async (url)=>{
+   await mongoose.connect(url);
 }
 
-module.exports = connectDB
+module.exports = connectDB;
+
+
+// const Task = mongoose.Schema(
+//     {
+//         name:{
+//             type: String,
+//             required: true,
+//             trim: true,
+//             maxLength: [20,"Name cannot be more then 20 characters."]
+//         }
+//     }
+// )

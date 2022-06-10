@@ -1,20 +1,24 @@
-const express = require('express')
-const app = express();
-const tasks = require('./routes/tasks')
+const express = require('express');
+const tasks = require('./routes/task')
 const connectDB = require('./db/connect')
 require('dotenv').config()
-app.use(express.static('./public'))
-app.use(express.json());
-app.use('/api/v1/tasks',tasks);
+const app = express();
 const port = 3000;
+app.use(express.static("./public"))
+app.use(express.json())
+app.use('/api/v1/tasks',tasks);
 
-const start = ()=>{
+
+
+
+
+
+const start = async ()=>{
     try {
-        connectDB(process.env.DB_URI);
-    app.listen(port, console.log(`Server is listening at port ${3000}`));
+       await connectDB(process.env.DB_URI);
+        app.listen(port,console.log(`app is listening at port ${port}`));
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
-
 start();

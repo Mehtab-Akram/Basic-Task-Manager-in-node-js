@@ -1,18 +1,16 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-
-const task = mongoose.Schema({
+const Task = mongoose.Schema({
     name :{
         type: String,
-        trim:true,
         required: true,
-        maxLength:[20,"Length cannot be more then 20 characters."]
+        trim: true,
+        maxLength: [20,`Length can not be more then 20 characters.`]
     },
-    completed:{
+    completed: {
         type: Boolean,
         default: false
     }
 });
 
-module.exports = mongoose.model("Tasks",task);
-
+module.exports = mongoose.model("Task",Task);
